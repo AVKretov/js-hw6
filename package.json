@@ -1,0 +1,16 @@
+{
+  "name": "7.6",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "mobile": "cypress run --env",
+    "notebook": "cypress run --config viewportHeight=1920, viewportWidth=1080"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "cypress": "^10.7.0"
+  }
+}
