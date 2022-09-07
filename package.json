@@ -4,8 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "mobile": "cypress run --env",
-    "notebook": "cypress run --config viewportHeight=1920, viewportWidth=1080"
+    
+    "mobile": "npx cypress run -b chrome", 
+    "mobileh": "npx cypress run -b chrome --headed", 
+    "notebook": "npx cypress run -b electron",
+    "notebookh": "npx cypress run -b electron --headed"
   },
   "keywords": [],
   "author": "",

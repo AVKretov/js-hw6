@@ -2,25 +2,21 @@ const { defineConfig } = require("cypress");
 
 module.exports = defineConfig({
   e2e: {
-    viewportHeight: 1440,
-    viewportWidth: 2960,
     baseUrl: "http://localhost:3000",
     setupNodeEvents(on, config) {
       on("before:browser:launch", (browser, launchOptions) => {
-        if (browser.name === "chrome" && browser.isHeadled) {
+        if (browser.name === "chrome" && browser.isHeadless) {
+          launchOptions.args.push("--window-size=1440,2960");
+        }
+        if (browser.name === "chrome" && browser.isHeaded) {
           launchOptions.args.push("--window-size=1440,2960");
         }
 
         if (browser.name === "electron" && browser.isHeadless) {
-          launchOptions.preferences.width = 1920;
-          launchOptions.preferences.height = 1080;
+          launchOptions.args.push("--window-size=1920,1080");
         }
-
-        if (browser.name === "firefox" && browser.isHeadless) {
-          // menubars take up height on the screen
-          // so fullPage screenshot size is 1400x1126
-          launchOptions.args.push("--width=1400");
-          launchOptions.args.push("--height=1200");
+        if (browser.name === "electron" && browser.isHeaded) {
+          launchOptions.args.push("--window-size=1920,1080");
         }
 
         return launchOptions;
